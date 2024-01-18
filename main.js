@@ -19,9 +19,6 @@ $(document).ready(function(){
     
     */
 $(document).ready(function(){
-    const enderecoDaNovaImagem = $('#endereco-imagem-nova');
-    const novoItem = $('<li style="display: none"></li>');
-    
     $('header button').click(function(){
         $('form').slideDown(); //efeito de slide -abrir pra baixo)
     })
@@ -32,9 +29,10 @@ $(document).ready(function(){
 
     $('form').on('submit', function(e) {
         e.preventDefault();
-        enderecoDaNovaImagem.val(); //no js é value, no jq é val
-         // quando adicionar uma imagem ela não vai ser exibida
+        const enderecoDaNovaImagem = $('#endereco-imagem-nova').val(); //no js é value, no jq é val
+        const novoItem = $('<li style="display: none"></li>'); // quando adicionar uma imagem ela não vai ser exibida
         $(`<img src="${enderecoDaNovaImagem}" />`).appendTo(novoItem); //appendto = adicionar para (append = adicionar)
+
         $(`
             <div class="overlay-imagem-link">
                 <a href = "${enderecoDaNovaImagem}" target="_blank" title="Ver imagem em tamanho real">
@@ -46,7 +44,7 @@ $(document).ready(function(){
         //exatamente a cópia da seção do HTMl só mudou que colocou a constante. 
         // ele abriu o $ pra colar varias linhas de HTML mais organizadas.
         $(novoItem).fadeIn(1000); //opções (5000) está em milissegundos, então aqui seria 5 segundos
-        enderecoDaNovaImagem.val(''); // limpa o que escrevemos no input 
+        $('#endereco-imagem-nova').val(''); // limpa o que escrevemos no input 
     })
 }) 
 
